@@ -1,13 +1,15 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="www.thymeleaf.org">
+<html lang="en" xmlns:th="www.thymeleaf.org" xmlns:sec="www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
     <meta charset="UTF-8"/>
     <title>Title</title>
     <script src="/js/angular.min.js" th:src="@{/js/angular.min.js}"></script>
     <script src="/app/app.module.js" th:src="@{/app/app.module.js}"></script>
     <script src="/app/message.controller.js" th:src="@{/app/message.controller.js}"></script>
+    <div th:replace = "fragments ::header"></div>
 </head>
 <body ng-app="app" ng-controller="MessageController">
+<div th:replace = "fragments :: navbar"></div>
 <label for = "message">Message</label>
 <input type = "text" name = "message" id = "message"/>
 <br/>
