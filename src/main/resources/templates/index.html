@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+    <script src="/js/angular.min.js" th:src="@{/js/angular.min.js}"></script>
+    <script src="/app/app.module.js" th:src="@{/app/app.module.js}"></script>
+    <script src="/app/message.controller.js" th:src="@{/app/message.controller.js}"></script>
+</head>
+<body ng-app="app" ng-controller="MessageController">
+<label for = "message">Message</label>
+<input type = "text" name = "message" id = "message"/>
+<br/>
+<label for = "user">Submitted By</label>
+<input type = "text" name = "user" id = "user"/>
+<button ng-click="add()" type="button">Submit Message</button>
+<table>
+    <th>Messages</th>
+    <th>Submitted By</th>
+    <th>Date</th>
+<tr ng-repeat="message in messageList">
+    <td>{{message.content}}</td>
+    <td>{{message.user}}</td>
+    <td>{{message.date | date:'MM-dd-yyyy HH:mm'}}</td>
+</tr>
+</table>
+
+</body>
+</html>
