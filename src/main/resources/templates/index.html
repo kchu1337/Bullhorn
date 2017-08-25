@@ -6,21 +6,28 @@
     <script src="/js/angular.min.js" th:src="@{/js/angular.min.js}"></script>
     <script src="/app/app.module.js" th:src="@{/app/app.module.js}"></script>
     <script src="/app/message.controller.js" th:src="@{/app/message.controller.js}"></script>
+    <script src="/js/angular-sanitize.js" th:src="@{/js/angular-sanitize.js}"></script>
     <div th:replace = "fragments ::header"></div>
 </head>
 <body ng-app="app" ng-controller="MessageController">
 <div th:replace = "fragments :: navbar"></div>
 <label for = "message">Message</label>
-<input type = "text" name = "message" id = "message"/>
+<form th:object="${message}" method="POST" action="/upload" enctype="multipart/form-data">
+<input type = "text" name = "message" id = "message" th:field="*{content}"/>
 <br/>
 <!--<label for = "user">Submitted By</label>
 <input type = "text" name = "user" id = "user"/>-->
-<button ng-click="add()" type="button">Submit Message</button>
+<button ng-click="add()" type="button">Submit Message without Image</button>
+    <br/><br/>
+    <input type="file" name="file"/>
+    <button type="submit">Submit Message with Image</button>
 
+</form>
 <div ng-repeat="message in messageList">
     <h2>{{message.content}}</h2>
     <p>Submitted by: {{message.username}}</p>
     <p> Date: {{message.date | date:'MM-dd-yyyy HH:mm'}}</p>
+    <p ng-bind-html ="message.image"></p>
     <br/>
 </div>
 

@@ -13,8 +13,6 @@
             $scope.messageList = response.data;
         });
 
-
-
         $scope.add = function () {
             //alert(document.getElementById("message").value);
             var content = document.getElementById("message").value;

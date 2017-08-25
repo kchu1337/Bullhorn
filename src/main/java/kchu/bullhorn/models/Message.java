@@ -15,6 +15,8 @@ public class Message {
 
     private Date date;
 
+    private String image;
+
     public long getId() {
         return id;
     }
@@ -45,5 +47,13 @@ public class Message {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }
