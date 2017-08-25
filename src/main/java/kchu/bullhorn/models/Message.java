@@ -11,9 +11,7 @@ public class Message {
 
     private String content;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "userdata_id")
-    private User user;
+    private String username;
 
     private Date date;
 
@@ -41,11 +39,11 @@ public class Message {
         this.date = date;
     }
 
-    public User getUser() {
-        return user;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUsername(String username) {
+        this.username = username;
     }
 }

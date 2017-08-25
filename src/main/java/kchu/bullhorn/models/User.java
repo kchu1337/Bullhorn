@@ -17,8 +17,6 @@ public class User {
     private String email;
     private String username;
     private String authority;
-    @OneToMany(mappedBy = "user", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
-    private Set<Message> messages;
 
     public User() {
     super();
@@ -79,11 +77,4 @@ public class User {
         this.authority = authority;
     }
 
-    public Set<Message> getMessages() {
-        return messages;
-    }
-
-    public void setMessages(Set<Message> messages) {
-        this.messages = messages;
-    }
 }

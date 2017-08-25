@@ -22,15 +22,9 @@ public class AngularController {
     public Iterable<Message> update(@PathVariable("message") String content, Principal principal){
         Message message = new Message();
         message.setContent(content);
-        User user = userRepository.findByUsername(principal.getName());
-        message.setUser(user);
+        message.setUsername(principal.getName());
         message.setDate(new Date());
         messageRepository.save(message);
-        Iterable<Message> messageList = messageRepository.findAll();
-        for(Message m : messageList){
-            System.out.println(m.getContent());
-            System.out.println(m.getUser().getUsername());
-        }
         return messageRepository.findAll();
     }
 
