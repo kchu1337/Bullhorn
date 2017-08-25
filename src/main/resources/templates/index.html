@@ -7,22 +7,37 @@
     <script src="/app/app.module.js" th:src="@{/app/app.module.js}"></script>
     <script src="/app/message.controller.js" th:src="@{/app/message.controller.js}"></script>
     <script src="/js/angular-sanitize.js" th:src="@{/js/angular-sanitize.js}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <div th:replace = "fragments ::header"></div>
 </head>
 <body ng-app="app" ng-controller="MessageController">
 <div th:replace = "fragments :: navbar"></div>
-<label for = "message">Message</label>
-<form th:object="${message}" method="POST" action="/upload" enctype="multipart/form-data">
-<input type = "text" name = "message" id = "message" th:field="*{content}"/>
-<br/>
-<!--<label for = "user">Submitted By</label>
-<input type = "text" name = "user" id = "user"/>-->
-<button ng-click="add()" type="button">Submit Message without Image</button>
-    <br/><br/>
-    <input type="file" name="file"/>
-    <button type="submit">Submit Message with Image</button>
+<div class = "container">
+<ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#menu1">Add Regular Message</a></li>
+    <li><a data-toggle="tab" href="#menu2">Add Message with Image</a></li>
+</ul>
 
-</form>
+<div class="tab-content">
+    <div id="menu1" class="tab-pane fade in active">
+        <label for = "message">Add Message</label>
+        <input type = "text" name = "message" id = "message"/>
+        <br/>
+        <button ng-click="add()" type="button">Submit Message without Image</button></div>
+    <div id="menu2" class="tab-pane fade">
+        <form th:object="${message}" method="POST" action="/upload" enctype="multipart/form-data">
+            <label for = "file">Add Image Message</label>
+            <input type = "text" name = "content" id = "content" th:field="*{content}"/>
+            <input type="file" name="file" id ="file"/>
+            <button type="submit">Submit Message with Image</button>
+
+        </form>
+    </div>
+</div>
+</div>
+
+
 <div ng-repeat="message in messageList">
     <h2>{{message.content}}</h2>
     <p>Submitted by: {{message.username}}</p>
