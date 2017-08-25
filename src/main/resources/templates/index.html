@@ -16,16 +16,14 @@
 <!--<label for = "user">Submitted By</label>
 <input type = "text" name = "user" id = "user"/>-->
 <button ng-click="add()" type="button">Submit Message</button>
-<table>
-    <th>Messages</th>
-    <th>Submitted By</th>
-    <th>Date</th>
-<tr ng-repeat="message in messageList">
-    <td>{{message.content}}</td>
-    <td>{{message.username}}</td>
-    <td>{{message.date | date:'MM-dd-yyyy HH:mm'}}</td>
-</tr>
-</table>
+
+<div ng-repeat="message in messageList">
+    <h2>{{message.content}}</h2>
+    <p>Submitted by: {{message.username}}</p>
+    <p> Date: {{message.date | date:'MM-dd-yyyy HH:mm'}}</p>
+    <br/>
+</div>
+
 
 </body>
 </html>
