@@ -1,9 +1,6 @@
 package kchu.bullhorn.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
@@ -14,7 +11,9 @@ public class Message {
 
     private String content;
 
-    private String user;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "userdata_id")
+    private User user;
 
     private Date date;
 
@@ -34,19 +33,19 @@ public class Message {
         this.content = message;
     }
 
-    public String getUser() {
-        return user;
-    }
-
-    public void setUser(String user) {
-        this.user = user;
-    }
-
     public Date getDate() {
         return date;
     }
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

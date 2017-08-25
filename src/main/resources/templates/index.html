@@ -13,8 +13,8 @@
 <label for = "message">Message</label>
 <input type = "text" name = "message" id = "message"/>
 <br/>
-<label for = "user">Submitted By</label>
-<input type = "text" name = "user" id = "user"/>
+<!--<label for = "user">Submitted By</label>
+<input type = "text" name = "user" id = "user"/>-->
 <button ng-click="add()" type="button">Submit Message</button>
 <table>
     <th>Messages</th>
@@ -22,7 +22,7 @@
     <th>Date</th>
 <tr ng-repeat="message in messageList">
     <td>{{message.content}}</td>
-    <td>{{message.user}}</td>
+    <td>{{message.user.username}}</td>
     <td>{{message.date | date:'MM-dd-yyyy HH:mm'}}</td>
 </tr>
 </table>
